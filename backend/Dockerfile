@@ -31,4 +31,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
   CMD curl -f http://localhost:10000/api/health || exit 1
 
 # 启动应用
-ENTRYPOINT ["java", "-Xmx512m", "-Xms256m", "-jar", "/app/app.jar", "--server.port=10000"]
+ENTRYPOINT ["java", "-Xmx512m", "-Xms256m", "-jar", "/app/app.jar", "--spring.profiles.active=render", "--server.port=10000"]

@@ -1,0 +1,72 @@
+server:
+  port: 10000
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  application:
+    name: qr-ordering-system
+  
+  # H2内存数据库
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  # H2控制台
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  
+  # 初始化数据
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+  
+  # 禁用Redis
+  autoconfigure:
+    exclude: 
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+  
+  # 禁用DevTools
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+
+# MyBatis Plus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: AUTO
+
+# 日志配置
+logging:
+  level:
+    com.qr.ordering: INFO
+    org.springframework: WARN
+
+# JWT配置
+jwt:
+  secret: ${JWT_SECRET:qr-ordering-secret-key-2024}
+  expiration: 86400000
+
+# Knife4j配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn

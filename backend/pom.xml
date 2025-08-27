@@ -25,9 +25,17 @@
         <druid.version>1.2.16</druid.version>
         <fastjson.version>2.0.25</fastjson.version>
         <knife4j.version>3.0.3</knife4j.version>
+        <snakeyaml.version>1.33</snakeyaml.version>
     </properties>
 
     <dependencies>
+        <!-- SnakeYAML - 显式声明版本以解决冲突 -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
+        
         <!-- Spring Boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
