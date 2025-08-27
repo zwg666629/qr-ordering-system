@@ -1,0 +1,61 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: qr-ordering-system
+  
+  # H2内存数据库配置
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+    
+  # H2控制台配置
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      
+  # 初始化数据
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      
+  # 文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+# MyBatis Plus配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: AUTO
+
+logging:
+  level:
+    com.qr.ordering: DEBUG
+
+# 应用配置
+app:
+  frontend:
+    url: http://localhost:5173
+
+# JWT配置
+jwt:
+  secret: qr-ordering-secret-key-2024
+  expiration: 86400000
+
+# 自定义上传配置
+app:
+  upload:
+    path: ./uploads
+    url: http://localhost:8080/uploads

@@ -1,0 +1,9 @@
+package com.qr.ordering.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.qr.ordering.entity.Category;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface CategoryMapper extends BaseMapper<Category> {
+}
