@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Node.js 前端依赖
 **/node_modules/
 npm-debug.log*
@@ -92,4 +93,100 @@ backend/uploads/
 
 # 编译输出
 out/
+=======
+# Node.js 前端依赖
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# 前端构建产物
+**/dist/
+**/build/
+
+# Java 后端
+*.class
+*.log
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+backend/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE 文件
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 数据库文件
+*.db
+*.sqlite
+*.h2.db
+
+# 日志文件
+logs/
+*.log
+
+# 配置文件中的敏感信息
+application-local.yml
+application-production.yml
+*.env
+
+# 上传文件目录
+backend/uploads/
+**/uploads/
+
+# 临时文件
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
+
+# 缓存文件
+.cache/
+*.cache
+
+# Windows 系统文件
+*.exe
+*.msi
+*.bat (保留项目中的启动脚本)
+!start*.bat
+!setup*.bat
+!check*.bat
+!fix*.bat
+
+# 编译输出
+out/
+>>>>>>> a98ace0d91d29ff6a48b77214d22d4a8c174ec8a
 gen/
