@@ -2,18 +2,33 @@
 FROM maven:3.8-openjdk-11 AS build
 WORKDIR /app
 COPY pom.xml .
-RUN mvn dependency:go-offline
+RUN mvn dependency:go-offline -B
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -B
 
 # 运行阶段
 FROM openjdk:11-jre-slim
 WORKDIR /app
+
+# 安装必要工具
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# 复制构建好的JAR文件
 COPY --from=build /app/target/*.jar app.jar
 
-# 创建上传目录
-RUN mkdir -p /app/uploads
+# 创建必要的目录
+RUN mkdir -p /app/uploads /app/logs
 
-EXPOSE 8080
+# 设置时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+# Render使用的端口
+EXPOSE 10000
+
+# 健康检查
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
+  CMD curl -f http://localhost:10000/api/health || exit 1
+
+# 启动应用
+ENTRYPOINT ["java", "-Xmx512m", "-Xms256m", "-jar", "/app/app.jar", "--server.port=10000"]
