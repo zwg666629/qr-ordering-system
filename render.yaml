@@ -11,6 +11,14 @@ services:
         value: 10000
       - key: SPRING_PROFILES_ACTIVE
         value: h2
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:h2:mem:testdb
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: org.h2.Driver
+      - key: SPRING_DATASOURCE_USERNAME
+        value: sa
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: 
       - key: JWT_SECRET
         generateValue: true
     healthCheckPath: /api/health
